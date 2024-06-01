@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>WEB CREATION</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            font-family: Century Gothic;
+        }
+        
+        header{
+            background-image:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(F:\website\public\images\gbg.webp.png);
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        ul{
+            float: right;
+            list-style-type: none;
+            margin-top: 25px;
+        }
+        
+        ul li{
+            display: inline-block;
+        }
+        
+        ul li a{
+            text-decoration: none;
+            color:rgb(255, 255, 255);
+            padding: 5px 20px;
+            border: 1px solid transparent;
+            transition: 0.6s ease;
+        }
+        
+        ul li a:hover{
+            background-color: #fff;
+            color: black;
+        
+        }
+        
+        ul li.active a{
+            background-color: #fff;
+            color: black;
+        }
+        .logo img{
+            float: left;
+            width: 100px;
+            height: auto;
+            margin-top: 15px;
+            
+        }
+        
+        .main{
+            max-width: 1400px;
+            margin: auto;
+        }
+        
+        .title{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        
+        .title h1{
+            color: #fff;
+            font-size: 70px;
+        }
+        
+        .button{
+            position: absolute;
+            top: 62%;
+            left: 45%;
+            transform: translate(-50%,-50%);
+        }
+        
+        .btn{
+            border: 1px solid #fff;
+            padding: 10px 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.6s ease;
+        }
+        
+        .btn:hover{
+            background-color: #fff;
+            color: black;
+        
+        }
+    </style>        
+</head>
+<body>
+    <header>
+        <div class="main">
+            <div class="logo"> <img src="E:\reg-log\User-Authentication-System-main\public\images\logo.png" alt=" logo"></div>
+            <ul>
+                <li class="active"><a href="#"> Home</a></li>
+                <li><a href="#"> Dash Board</a></li>
+                <!-- <li><a href="#"> Gallery </a></li> -->
+                <li><a href="#"> About</a></li>
+                <li><a href="#"> Contact Us</a></li>
+            </ul>
+
+        </div>
+        <div class="title">
+            <!-- <h1>WEB CREATION</h1> -->
+        </div>
+        <div class="button">
+            <!-- <a href="New folder\today.html">hi</a> -->
+            <a href="New folder\today.html" class="btn">LOG IN
+            </a>
+            <a href="#" class="btn" >SIGN UP </a>
+
+        </div>
+    </header>
+</body>
+</html> 

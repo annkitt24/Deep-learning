@@ -1,0 +1,150 @@
+<%- include('partials/header'); -%>
+
+<div class="flx">
+  <div class="card mb-3 mycard text-bg-light border-dark">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/images/waghodia.jpeg"
+          class="img-fluid rounded-start"
+          alt="Waghodia Chokdi"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Waghodia Chokdi</h5>
+          <!-- <p class="card-text">Garbage has not been collected!</p> -->
+          <button
+            id="myButton0"
+            style="margin-top: 2rem; background-color: greenyellow"
+          >
+            Collected !
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3 mycard text-bg-light border-dark">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/images/vrundavan.jpeg"
+          class="img-fluid rounded-start"
+          alt="Vrundavan Chokdi"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Vrundavan Chokdi</h5>
+          <!-- <p class="card-text">Garbage has not been collected!</p> -->
+          <button
+            id="myButton1"
+            style="margin-top: 2rem; background-color: greenyellow"
+          >
+            Collected !
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3 mycard text-bg-light border-dark">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/images/ratribazar.jpeg"
+          class="img-fluid rounded-start"
+          alt="Ratri Bazar"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Ratri Bazar</h5>
+          <!-- <p class="card-text">Garbage has not been collected!</p> -->
+          <button
+            id="myButton2"
+            style="margin-top: 2rem; background-color: greenyellow"
+          >
+            Collected !
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var button1 = document.getElementById("myButton0");
+  var button2 = document.getElementById("myButton1");
+  var button3 = document.getElementById("myButton2");
+
+  async function fetchAndUpdateButton(buttonId) {
+    try {
+      const response = await fetch("/button-color");
+      const buttonColor = await response.text();
+      if (buttonColor == "1") {
+        document.getElementById(buttonId).innerHTML = "Mark As collected !";
+        document.getElementById(buttonId).style.backgroundColor = "#ff615e";
+      } else {
+        document.getElementById(buttonId).innerHTML = "Collected !";
+        document.getElementById(buttonId).style.backgroundColor = "greenyellow";
+      }
+    } catch (error) {
+      console.error("Error fetching/updating button color:", error);
+    }
+  }
+
+  button1.addEventListener("click", function () {
+    if (button1.innerHTML == "Collected !") {
+      button1.innerHTML = "Mark As collected !";
+      button1.style.backgroundColor = "#ff615e";
+      const data = { val: "1" };
+      fetch("/changed-json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    } else {
+      button1.innerHTML = "Collected !";
+      button1.style.backgroundColor = "greenyellow";
+      const data = { val: "0" };
+      fetch("/changed-json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    }
+  });
+
+  button2.addEventListener("click", function () {
+    if (button2.innerHTML == "Collected !") {
+      button2.innerHTML = "Mark As collected !";
+      button2.style.backgroundColor = "#ff615e";
+    } else {
+      button2.innerHTML = "Collected !";
+      button2.style.backgroundColor = "greenyellow";
+    }
+  });
+
+  button3.addEventListener("click", function () {
+    if (button3.innerHTML == "Collected !") {
+      button3.innerHTML = "Mark As collected !";
+      button3.style.backgroundColor = "#ff615e";
+    } else {
+      button3.innerHTML = "Collected !";
+      button3.style.backgroundColor = "greenyellow";
+    }
+  });
+
+  // Execute a function every 1 seconds
+  setInterval(function () {
+    fetchAndUpdateButton("myButton0");
+  }, 3000); // 1000 milliseconds = 1 second
+</script>
+
+<%- include('partials/footer'); -%>

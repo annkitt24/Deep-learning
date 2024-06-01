@@ -1,0 +1,136 @@
+
+<%- include('partials/header'); -%>
+
+<div class="flx">
+  <div class="card mb-3 mycard text-bg-light border-dark">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/images/waghodia.jpeg"
+          class="img-fluid rounded-start"
+          alt="Waghodia Chokdi"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Waghodia Chokdi</h5>
+          <p class="card-text">Garbage has not been collected!</p>
+          <button id="myButton0">Mark As collected !</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3 mycard text-bg-light border-dark">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/images/vrundavan.jpeg"
+          class="img-fluid rounded-start"
+          alt="Vrundavan Chokdi"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Vrundavan Chokdi</h5>
+          <p class="card-text">Garbage has not been collected!</p>
+          <button id="myButton1">Collected !</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3 mycard text-bg-light border-dark">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/images/ratribazar.jpeg"
+          class="img-fluid rounded-start"
+          alt="Ratri Bazar"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Ratri Bazar</h5>
+          <p class="card-text">Garbage has not been collected!</p>
+          <button id="myButton2">Collected !</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <script>
+  async function fetchButtonColor() {
+    try {
+      const response = await fetch('/button-color');
+      const buttonColor = await response.text();
+      document.getElementById("myButton0").style.backgroundColor = buttonColor;
+    } catch (error) {
+      console.error("Error fetching button color:", error);
+    }
+  }
+
+  fetchButtonColor(); -->
+  <script>
+var buttonElements = document.querySelectorAll('button');
+var buttonIDs = [];
+
+buttonElements.forEach(function(button){
+  var buttonID = button.id;
+  if(buttonID){
+    buttonIDs.push(buttonID);
+  }
+});
+
+
+    async function fetchAndUpdateButtonColor(buttonIDs) {
+      let i;
+      for(i=0;i<=buttonIDs.length;i++){
+      try {
+        const response = await fetch('/button-color');
+        const buttonColor = await response.text();
+        document.getElementById(buttonIds[i]).style.backgroundColor = buttonColor;
+      } catch (error) {
+        console.error("Error fetching/updating button color:", error);
+      }
+    }
+  }
+
+
+    // Call the function for each button
+  fetchAndUpdateButtonColor("buttonIDs");
+ // fetchAndUpdateButtonColor("myButton1");
+  //fetchAndUpdateButtonColor("myButton2");
+
+  // async function fetchButtonColor() {
+  //   try {
+  //     const response = await fetch('/button-color');
+  //     const buttonColor = await response.text();
+  //     document.getElementById('myButton1').style.backgroundColor = buttonColor;
+  //   } catch (error) {
+  //     console.error('Error fetching button color:', error);
+  //   }
+  // }
+
+  // fetchButtonColor();
+
+  // async function fetchButtonColor() {
+  //   try {
+  //     const response = await fetch('/button-color');
+  //     const buttonColor = await response.text();
+  //     document.getElementById('myButton2').style.backgroundColor = buttonColor;
+  //   } catch (error) {
+  //     console.error('Error fetching button color:', error);
+  //   }
+  // }
+
+  // fetchButtonColor();
+</script>
+
+<%- include('partials/footer'); -%>
+
+
+<form action="/logout" method="POST">
+    <button type="submit">Log Out</button>
+</form>
